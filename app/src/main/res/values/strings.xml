@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">Hero</string>
+    <string name="alert_title">İnternete Bağlı Değilsiniz!</string>
+    <string name="karsilama">Sokak hayvanlarına yardım ederek
+sen de bir Hero olabilirsin.</string>
+    <string name="alert_message">Uygulamayı Kullanmak İçin İnternete Bağlanın.</string>
+    <string name="alert_positive_button">Ayarlara Git</string>
+    <string name="alert_negative_button">Çıkış</string>
+
+    <string name="listScreen_alert_exit_message">Çıkış Yapmak İstiyor musunuz?</string>
+    <string name="listScreen_alert_exit_yes">Evet</string>
+    <string name="listScreen_alert_exit_no">Hayır</string>
+    <string name="listScreen_alert_exit_title">Dikkat!</string>
+
+    <string name="listScreen_click_song">Tıklanan Şarkı: </string>
+
+    <string name="activity_detail_title">TextView</string>
+    <string name="activity_detail_detail">TextView</string>
+
+
+    <string name="cardview_song_name">Şarkı Adı: </string>
+    <string name="cardview_song_name_sample">We Will Rock You</string>
+    <string name="cardview_song_album">Albüm: </string>
+    <string name="cardview_song_album_sample">News of the World</string>
+    <string name="cardview_song_year">Şarkı Yılı: </string>
+    <string name="cardview_song_year_sample">1977 </string>
+
+</resources>
