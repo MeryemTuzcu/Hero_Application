@@ -9,18 +9,14 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
+import androidx.appcompat.app.AppCompatActivity;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 
 public class UyeOlActivity extends AppCompatActivity {
+
 
 
     Button devamet;
@@ -32,11 +28,14 @@ public class UyeOlActivity extends AppCompatActivity {
     ImageView imageView16;
     ImageView imageView17;
     ImageView imageView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_uye_ol);
         init();
+
+
 
     }
 
@@ -80,11 +79,18 @@ public class UyeOlActivity extends AppCompatActivity {
                 } else {
                     ddRef.push().setValue(model);
                     Toast.makeText(UyeOlActivity.this, "Üye işleminiz gerçekleştirilmiştir!", Toast.LENGTH_LONG).show();
+                    startActivity(new Intent(UyeOlActivity.this, GirisYapActivity.class));
+                    finish();
 
                 }
             }
 
         });
+    }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(UyeOlActivity.this, HosgeldinActivity.class));
     }
 
 }

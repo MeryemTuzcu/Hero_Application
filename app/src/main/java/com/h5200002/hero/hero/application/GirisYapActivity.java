@@ -1,8 +1,6 @@
 package com.h5200002.hero.hero.application;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -13,9 +11,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -41,14 +42,7 @@ public class GirisYapActivity extends AppCompatActivity {
 
 
 
-//private Toolbar actionbarGiris;
-//private void init(){
-//    actionbarGiris = (Toolbar) findViewById(R.id.actionbar);
-//    setSupportActionBar(actionbarGiris);
-//    getSupportActionBar().setTitle("Üye Giriş");
-//    getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-//
-//}
+
 
     private void init(){
         girisyap=(Button) findViewById(R.id.girisyap);
@@ -70,6 +64,58 @@ public class GirisYapActivity extends AppCompatActivity {
         setContentView(R.layout.activity_giris);
         init();
 
+
+
+
+
+
+        sifremiunuttum.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EditText resetmail = new EditText(v.getContext());
+                AlertDialog.Builder passwordReset = new AlertDialog.Builder(v.getContext());
+                passwordReset.setTitle("Şifremi sıfırla");
+                passwordReset.setMessage("Şifreni sıfırlamak için EMail adresinizi giriniz");
+                passwordReset.setView(resetmail);
+
+                passwordReset.setPositiveButton("evet", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        String mail = resetmail.getText().toString();
+                        if (TextUtils.isEmpty(mail)) {
+                            Toast.makeText(GirisYapActivity.this, "Geçerli bir email adresi giriniz!", Toast.LENGTH_LONG).show();
+
+                        }else{
+                            auth.sendPasswordResetEmail(mail).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void unused) {
+                                    Toast.makeText(GirisYapActivity.this, "Emalinize yenileme linki gönderilmiştir", Toast.LENGTH_LONG).show();
+
+                                }
+                            }).addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Toast.makeText(GirisYapActivity.this,"Hata! Emalinize Link gönerilemedi"+ e.getMessage(), Toast.LENGTH_LONG).show();
+                                }
+                            });
+
+                        }
+
+                    }
+                });
+                passwordReset.setNegativeButton("hayır", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+
+                passwordReset.create().show();
+
+            }
+        });
+
         girisyap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -77,6 +123,8 @@ public class GirisYapActivity extends AppCompatActivity {
             }
         });
     }
+
+
 
     private void loginUser() {
         String email = email2.getText().toString();
@@ -99,28 +147,47 @@ public class GirisYapActivity extends AppCompatActivity {
 
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference( "Uyeler");
 
-        Query checkUser = reference.orderByChild("uyemail").equalTo(userEnterEmail);
+        Query checkMail = reference.orderByChild("uyemail").equalTo(userEnterEmail);
+        Query checkPassword = reference.orderByChild("uyesifre").equalTo(userEnterSifre);
 
-        checkUser.addListenerForSingleValueEvent(new ValueEventListener() {
+
+        checkMail.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if(snapshot.exists()){
-                    String sifreDB = snapshot.child(userEnterEmail).child("uyesifre").getValue(String.class);
+                    DataSnapshot ds = null;
+                    for (DataSnapshot temp: snapshot.getChildren()) {
+                        System.out.println(temp.child("uyesifre").getValue());
+                        System.out.println(temp.child("uyenamesurname").getValue());
+                        if(temp.child("uyemail").getValue().equals(userEnterEmail) && temp.child("uyesifre").getValue().equals(userEnterSifre) ){
+                            ds = temp;
+                            break;
+                        }
+                    }
+                    if(ds == null){
+                        sifre2.setError("Şifre veya Email Yanlış!");
 
-                    if(sifreDB.equals(userEnterSifre)){
-                        String nameDB = snapshot.child(userEnterEmail).child("uyenamesurname").getValue(String.class);
-                        String numDB = snapshot.child(userEnterEmail).child("uyenum").getValue(String.class);
-                        String mailDB = snapshot.child(userEnterEmail).child("uyemail").getValue(String.class);
+                    }else if (ds.child("uyetip").getValue().equals(true) ){
+                        String sifreDB = ds.child("uyesifre").getValue(String.class);
+                        String nameDB = ds.child("uyenamesurname").getValue(String.class);
+                        String numDB = ds.child("uyenum").getValue(String.class);
+                        String mailDB = ds.child("uyemail").getValue(String.class);
+
+                        Intent hizmet = new Intent(GirisYapActivity.this, BeHizmetActivity.class);
+                        startActivity(hizmet);
+                        finish();
+                    }else{
+                        String sifreDB = ds.child("uyesifre").getValue(String.class);
+                        String nameDB = ds.child("uyenamesurname").getValue(String.class);
+                        String numDB = ds.child("uyenum").getValue(String.class);
+                        String mailDB = ds.child("uyemail").getValue(String.class);
 
                         Intent hizmet = new Intent(GirisYapActivity.this, HizmetlerActivity.class);
                         startActivity(hizmet);
                         finish();
 
-                    }else{
-                        sifre2.setError("Yanlış Şifre");
                     }
                 }
-
             }
 
             @Override
@@ -128,6 +195,14 @@ public class GirisYapActivity extends AppCompatActivity {
 
             }
         });
+
+
+
+    }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(GirisYapActivity.this, HosgeldinActivity.class));
     }
 
 

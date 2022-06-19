@@ -8,8 +8,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Resources;
 
-import androidx.annotation.NonNull;
-
 public class AlertUtil {
     private static AlertDialog.Builder builder;
     private static Resources resorces;
@@ -44,34 +42,6 @@ public class AlertUtil {
         builder.show();
     }
 
-    public static boolean onBackPressed(@NonNull Context context){
-        resorces = context.getResources();
-        builder = new AlertDialog.Builder(context);
-        try{
-            builder.setTitle(resorces.getString(R.string.listScreen_alert_exit_title));
-            builder.setMessage(resorces.getString(R.string.listScreen_alert_exit_message));
 
-
-            builder.setPositiveButton(resorces.getString(R.string.listScreen_alert_exit_yes),new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface, int i) {
-                    System.exit(0);
-                }
-            });
-
-            builder.setNegativeButton(resorces.getString(R.string.listScreen_alert_exit_no), new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface, int i) {
-                    dialogInterface.cancel();
-                }
-            });
-            builder.setCancelable(false);
-            builder.show();
-        }catch(Exception e){
-          return  true;
-        }
-        return false;
-
-    }
 
 }

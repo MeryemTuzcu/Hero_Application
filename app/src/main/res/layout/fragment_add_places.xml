@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F7E5FF"
+    android:orientation="vertical"
+    android:padding="20dp"
+    tools:context=".AddPlacesFragment">
+
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:gravity="center"
+        android:text="Adres Ekle"
+        android:textColor="#286B67"
+        android:textSize="30dp" />
+
+    <EditText
+        android:id="@+id/edStreet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/common_google_signin_btn_icon_dark_normal_background"
+        android:hint="Lütfen adres bilgisini giriniz!"
+        android:padding="10dp" />
+
+    <EditText
+        android:id="@+id/edIl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/common_google_signin_btn_icon_dark_normal_background"
+        android:hint="Lütfen İl giriniz"
+        android:padding="10dp" />
+
+    <EditText
+        android:id="@+id/edIlce"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/common_google_signin_btn_icon_dark_normal_background"
+        android:hint="Lütfen İlçe giriniz"
+        android:padding="10dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            android:fontFamily="@font/alata"
+            android:text="Fotoğraf seçiniz"
+            android:textColor="#286B67"
+            android:textSize="25dp" />
+
+        <ImageView
+            android:id="@+id/foto"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/ic_baseline_camera_alt_24" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnKaydet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="#E79797"
+        android:text="Konumu Kaydet" />
+</LinearLayout>

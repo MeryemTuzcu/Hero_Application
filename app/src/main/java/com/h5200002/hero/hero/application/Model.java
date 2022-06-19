@@ -74,4 +74,63 @@ public class Model {
     public void setUyedurum(boolean uyedurum) {
         this.uyedurum = uyedurum;
     }
+
+
+
+
+
+
+
+
+
+
+//
+//
+//    String edStreet,edIl,edIlce;
+//    int konumid;
+//
+//    public Model(String edStreet, String edIl, String edIlce, int konumid) {
+//        this.edStreet = edStreet;
+//        this.edIl = edIl;
+//        this.edIlce = edIlce;
+//        this.konumid = konumid;
+//
+//    }
+//
+//
+//
+//    public String getEdStreet() {
+//        return edStreet;
+//    }
+//
+//    public void setEdStreet(String uyenamesurname) {
+//        this.edStreet = edStreet;
+//    }
+//
+//    public String getEdIl() {
+//        return edIl;
+//    }
+//
+//    public void setEdIl(String edIl) {
+//        this.edIl = edIl;
+//    }
+//
+//    public String getEdIlce() {
+//        return edIlce;
+//    }
+//
+//    public void setEdIlce(String edIlce) {
+//        this.edIlce = edIlce;
+//    }
+//
+//
+//    public int getKonumid() {
+//        return konumid;
+//    }
+//
+//    public void setKonumid(int konumid) {
+//        this.konumid = konumid;
+//    }
+
+
 }

@@ -45,7 +45,7 @@
             app:layout_constraintVertical_bias="0.329" />
 
         <Button
-            android:id="@+id/mamatakip"
+            android:id="@+id/parabagis"
             android:layout_width="254dp"
             android:layout_height="56dp"
             android:backgroundTint="#90BC8F"
@@ -79,7 +79,7 @@
             app:layout_constraintVertical_bias="0.515" />
 
         <Button
-            android:id="@+id/barinaktakip"
+            android:id="@+id/kayipilanlari"
             android:layout_width="254dp"
             android:layout_height="56dp"
             android:backgroundTint="#AD9ED7"
@@ -95,30 +95,8 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.641" />
 
-        <ImageButton
-            android:id="@+id/imageButton"
-            android:layout_width="69dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="212dp"
-            android:backgroundTint="#8000BCD4"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.227"
-            app:srcCompat="@drawable/deneme" />
 
-        <ImageButton
-            android:id="@+id/imageButton2"
-            android:layout_width="69dp"
-            android:layout_height="50dp"
-            android:backgroundTint="#7700BCD4"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.953"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.227"
-            app:srcCompat="@drawable/notific" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

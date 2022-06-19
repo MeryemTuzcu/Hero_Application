@@ -11,18 +11,14 @@ sen de bir Hero olabilirsin.</string>
     <string name="listScreen_alert_exit_yes">Evet</string>
     <string name="listScreen_alert_exit_no">Hayır</string>
     <string name="listScreen_alert_exit_title">Dikkat!</string>
+    <string name="title_activity_maps">MapsActivity</string>
+    <string name="title_activity_map">MapActivity</string>
+    <string name="tab_text_1">Adres Giriniz</string>
+    <string name="tab_text_2">Konum Listesi</string>
+    <string name="tab_text_3">Harita</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_map_mama">MapMamaActivity</string>
 
-    <string name="listScreen_click_song">Tıklanan Şarkı: </string>
-
-    <string name="activity_detail_title">TextView</string>
-    <string name="activity_detail_detail">TextView</string>
-
-
-    <string name="cardview_song_name">Şarkı Adı: </string>
-    <string name="cardview_song_name_sample">We Will Rock You</string>
-    <string name="cardview_song_album">Albüm: </string>
-    <string name="cardview_song_album_sample">News of the World</string>
-    <string name="cardview_song_year">Şarkı Yılı: </string>
-    <string name="cardview_song_year_sample">1977 </string>
 
 </resources>
