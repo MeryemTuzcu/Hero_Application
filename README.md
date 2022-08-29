@@ -4,6 +4,8 @@ Android Studio üzerinden Java dili ile Firebase Realtime Database ile geliştir
 
 2 farklı kullanıcı girişi bulunur.
 
+Splash Screen - Üye ol- Giriş Yap ve bu farklı üye girişlerinin ulaşabileceği aşağıdaki ekranlar bulunmaktadır. Bahsedilen işlevlerin hepsi gerçekleştirilebilmektedir.
+
 Yetkili girişi:
 
   ● Mama takibi
